@@ -1,9 +1,11 @@
 spring:
+  config:
+    import: env.yml
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    password:
+    password: ${DB_PASSWORD}
     url: jdbc:mysql://localhost:3306/meeting_rooms
-    username:
+    username: ${DB_USER}
   jpa:
     generate-ddl: true
     hibernate:
