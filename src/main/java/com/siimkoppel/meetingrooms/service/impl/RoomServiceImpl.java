@@ -22,4 +22,12 @@ public class RoomServiceImpl implements RoomService {
         return RoomMapper.mapToRoomDto(savedRoom);
     }
 
+    @Override
+    public RoomDto getRoomById(Long id) {
+        Room room = roomRepository.
+                findById(id).
+                orElseThrow(()->new RuntimeException("Room does not exist"));
+        return RoomMapper.mapToRoomDto(room);
+    }
+
 }
