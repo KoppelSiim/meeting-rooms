@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -23,4 +23,8 @@ public class Room {
     private int roomNumber;
     @Column(name = "booked")
     private boolean booked;
+    @Column(name = "booked_from")
+    private LocalDateTime bookedFrom;
+    @Column(name = "booked_to")
+    private LocalDateTime bookedTo;
 }
