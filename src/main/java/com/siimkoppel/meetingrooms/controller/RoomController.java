@@ -2,11 +2,14 @@ package com.siimkoppel.meetingrooms.controller;
 
 import com.siimkoppel.meetingrooms.dto.RoomDto;
 import com.siimkoppel.meetingrooms.service.RoomService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@Validated
 @RequestMapping("/api")
 public class RoomController {
     private final RoomService roomService;
@@ -22,8 +25,9 @@ public class RoomController {
     }
 
     @PostMapping("/addroom")
-    public ResponseEntity<RoomDto> addRoom(@RequestBody RoomDto roomDto) {
-        return new ResponseEntity<>(roomService.createRoom(roomDto), HttpStatus.CREATED);
+    public ResponseEntity<RoomDto> addRoom(@Valid @RequestBody RoomDto roomDto) {
+        RoomDto createdRoomDto = roomService.createRoom(roomDto);
+        return new ResponseEntity<>(createdRoomDto, HttpStatus.CREATED);
     }
 
     @PostMapping("/book/{id}")
