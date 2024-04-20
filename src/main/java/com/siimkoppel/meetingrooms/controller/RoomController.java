@@ -20,6 +20,12 @@ public class RoomController {
         return new ResponseEntity<>(roomService.createRoom(roomDto), HttpStatus.CREATED);
     }
 
+    @PostMapping("/book/{id}")
+    public ResponseEntity<RoomDto> bookRoomById(@PathVariable Long id) {
+        RoomDto bookedRoomDto = roomService.bookRoom(id);
+        return new ResponseEntity<>(bookedRoomDto, HttpStatus.OK);
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<RoomDto> getRoomById(@PathVariable Long id) {
         RoomDto roomDto = roomService.getRoomById(id);

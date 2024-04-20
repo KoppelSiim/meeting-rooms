@@ -1,6 +1,7 @@
 package com.siimkoppel.meetingrooms.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,8 +24,10 @@ public class Room {
     private int roomNumber;
     @Column(name = "booked")
     private boolean booked;
+    @NotNull(message = "Please enter booking start time")
     @Column(name = "booked_from")
     private LocalDateTime bookedFrom;
+    @NotNull(message = "Please enter booking end time")
     @Column(name = "booked_to")
     private LocalDateTime bookedTo;
 }
