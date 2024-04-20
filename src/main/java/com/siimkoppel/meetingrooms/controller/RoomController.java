@@ -15,6 +15,12 @@ public class RoomController {
         this.roomService = roomService;
     }
 
+    @GetMapping("/welcome")
+    public ResponseEntity<String> welcomeMessage() {
+        String message = "Welcome to my meeting rooms application";
+        return ResponseEntity.ok(message);
+    }
+
     @PostMapping("/addroom")
     public ResponseEntity<RoomDto> addRoom(@RequestBody RoomDto roomDto) {
         return new ResponseEntity<>(roomService.createRoom(roomDto), HttpStatus.CREATED);
