@@ -7,6 +7,9 @@ import com.siimkoppel.meetingrooms.repository.RoomRepository;
 import com.siimkoppel.meetingrooms.service.RoomService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class RoomServiceImpl implements RoomService {
 
@@ -39,4 +42,11 @@ public class RoomServiceImpl implements RoomService {
         return RoomMapper.mapToRoomDto(updatedRoom);
     }
 
+    @Override
+    public List<RoomDto> getAllRooms() {
+        List<Room> rooms = roomRepository.findAll();
+        return rooms.stream()
+                .map(RoomMapper::mapToRoomDto)
+                .collect(Collectors.toList());
+    }
 }

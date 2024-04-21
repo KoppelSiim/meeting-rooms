@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @Validated
 @RequestMapping("/api")
@@ -22,6 +24,11 @@ public class RoomController {
     public ResponseEntity<String> welcomeMessage() {
         String message = "Welcome to my meeting rooms application";
         return ResponseEntity.ok(message);
+    }
+    @GetMapping("/rooms")
+    public ResponseEntity<List<RoomDto>> getAllRooms() {
+        List<RoomDto> rooms = roomService.getAllRooms();
+        return ResponseEntity.ok(rooms);
     }
 
     @PostMapping("/addroom")
