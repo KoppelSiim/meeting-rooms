@@ -7,14 +7,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class ViewController {
-    private final RoomViewModel roomViewModel;
-
-    public ViewController(RoomViewModel roomViewModel) {
-        this.roomViewModel = roomViewModel;
-    }
 
     @GetMapping("/home")
     public ModelAndView renderHomeView() {
+        RoomViewModel roomViewModel = new RoomViewModel("My Room", 123);
         ModelAndView modelAndView = new ModelAndView("home");
         modelAndView.addObject("roomName", roomViewModel.roomName());
         modelAndView.addObject("roomNumber", roomViewModel.roomNumber());
