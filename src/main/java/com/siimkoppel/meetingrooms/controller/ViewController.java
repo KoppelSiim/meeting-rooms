@@ -1,5 +1,6 @@
 package com.siimkoppel.meetingrooms.controller;
 
+import com.siimkoppel.meetingrooms.dto.RoomDto;
 import com.siimkoppel.meetingrooms.service.RoomService;
 import com.siimkoppel.meetingrooms.viewmodel.RoomViewModel;
 import org.springframework.stereotype.Controller;
@@ -19,13 +20,14 @@ public class ViewController {
 
     @GetMapping("/home")
     public ModelAndView renderHomeView() {
-
-        List<RoomViewModel> roomViewModels = roomService.getAllRooms().stream()
+        List<RoomDto> allRooms = roomService.getAllRooms();
+        List<RoomViewModel> roomViewModels = allRooms
+                .stream()
                 .map(roomDto -> new RoomViewModel(roomDto.getRoomName(), roomDto.getRoomNumber()))
                 .collect(Collectors.toList());
-        ModelAndView modelAndView = new ModelAndView("home");
-        modelAndView.addObject("roomViewModels", roomViewModels);
-        return modelAndView;
+        ModelAndView homeViewModel = new ModelAndView("home");
+        homeViewModel.addObject("roomViewModels", roomViewModels);
+        return homeViewModel;
 
     }
 }
