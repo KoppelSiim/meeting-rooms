@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Meeting rooms</title>
+    <title>Rooms</title>
 </head>
 <body>
-    <h1>Room name is ${roomName}!</h1>
-    <h1>Room number is ${roomNumber}!</h1>
+    <h1>List of Rooms:</h1>
+    <ul>
+        <#list roomViewModels as room>
+            <li>${room.roomName()}</li>
+            <li>${room.roomNumber()}</li>
+        </#list>
+    </ul>
 </body>
 </html>
