@@ -30,4 +30,9 @@ public class ViewController {
         return homeViewModel;
 
     }
+    @GetMapping("/addroom")
+    public ModelAndView addRoomView() {
+        return new ModelAndView("addroom");
+    }
+
 }
