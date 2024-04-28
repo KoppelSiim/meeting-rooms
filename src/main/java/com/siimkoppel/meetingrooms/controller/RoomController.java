@@ -2,12 +2,15 @@ package com.siimkoppel.meetingrooms.controller;
 
 import com.siimkoppel.meetingrooms.dto.RoomDto;
 import com.siimkoppel.meetingrooms.service.RoomService;
+import jakarta.validation.ConstraintViolationException;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -34,13 +37,18 @@ public class RoomController {
     }
 
     @PostMapping("/addroom")
-    public ResponseEntity<String> handleFormSubmission(
-            @RequestParam @NotBlank(message = "Please enter a room name") String roomName,
-            @RequestParam @Positive(message = "Room number must be positive" ) int roomNumber
+    public ResponseEntity<?> handleFormSubmission(
+        @Valid @RequestParam @NotBlank(message = "Please enter a room name") String roomName,
+        @Valid @RequestParam @Positive(message = "Room number must be positive") int roomNumber
     ) {
         RoomDto dto = new RoomDto(roomName, roomNumber);
-        roomService.createRoom(dto);
-        return new ResponseEntity<>("Added a new room to database", HttpStatus.CREATED);
+        try {
+            RoomDto createdRoomDto = roomService.createRoom(dto);
+            return new ResponseEntity<>(createdRoomDto, HttpStatus.CREATED);
+        } catch (ConstraintViolationException e) {
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST, "Bad input", e);
+        }
     }
 
     @PostMapping("/book/{id}")
