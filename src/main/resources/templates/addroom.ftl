@@ -5,11 +5,11 @@
 </head>
 <body>
 <h1>Add room</h1>
-<form action="" method="post">
+<form action="api/addroom" method="post">
     <div>Roomname:</div>
-    <input type="text" name="roomname"/>
+    <input type="text" name="roomName"/>
     <div>Room number:</div>
-    <input type="number" name="roomnumber"/></br>
+    <input type="number" name="roomNumber"/></br>
 	<input type="submit" value="Submit"/>
 </form>
 </body>
