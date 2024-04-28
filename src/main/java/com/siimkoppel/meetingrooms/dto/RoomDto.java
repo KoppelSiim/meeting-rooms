@@ -19,4 +19,9 @@ public class RoomDto {
     private boolean booked;
     private LocalDateTime bookedFrom;
     private LocalDateTime bookedTo;
+
+    public RoomDto(String roomName, Integer roomNumber) {
+        this.roomName = roomName;
+        this.roomNumber = roomNumber;
+    }
 }
