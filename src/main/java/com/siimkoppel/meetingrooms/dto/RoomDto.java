@@ -13,7 +13,6 @@ import java.time.LocalDateTime;
 public class RoomDto {
     private Long id;
     private String roomName;
-    @NotNull(message = "Please enter room number")
     private Integer roomNumber;
     private boolean booked;
     private LocalDateTime bookedFrom;

@@ -3,6 +3,7 @@ package com.siimkoppel.meetingrooms.controller;
 import com.siimkoppel.meetingrooms.dto.RoomDto;
 import com.siimkoppel.meetingrooms.service.RoomService;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Positive;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -35,7 +36,7 @@ public class RoomController {
     @PostMapping("/addroom")
     public ResponseEntity<String> handleFormSubmission(
             @RequestParam @NotBlank(message = "Please enter a room name") String roomName,
-            @RequestParam int roomNumber
+            @RequestParam @Positive(message = "Room number must be positive" ) int roomNumber
     ) {
         RoomDto dto = new RoomDto(roomName, roomNumber);
         roomService.createRoom(dto);
