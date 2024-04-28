@@ -12,7 +12,6 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class RoomDto {
     private Long id;
-    @NotNull(message = "Please enter room name")
     private String roomName;
     @NotNull(message = "Please enter room number")
     private Integer roomNumber;

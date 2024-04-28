@@ -1,18 +1,14 @@
 package com.siimkoppel.meetingrooms.controller;
 
 import com.siimkoppel.meetingrooms.dto.RoomDto;
-import com.siimkoppel.meetingrooms.entity.Room;
 import com.siimkoppel.meetingrooms.service.RoomService;
-import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.annotation.PostMapping;
 
-import java.time.LocalDateTime;
 import java.util.List;
-import java.util.concurrent.RecursiveTask;
 
 @RestController
 @Validated
@@ -29,6 +25,7 @@ public class RoomController {
         String message = "Welcome to my meeting rooms application";
         return ResponseEntity.ok(message);
     }
+
     @GetMapping("/rooms")
     public ResponseEntity<List<RoomDto>> getAllRooms() {
         List<RoomDto> rooms = roomService.getAllRooms();
@@ -36,8 +33,11 @@ public class RoomController {
     }
 
     @PostMapping("/addroom")
-    public ResponseEntity<String> handleFormSubmission(@RequestParam String roomName, @RequestParam int roomNumber) {
-        RoomDto dto = new RoomDto(roomName,roomNumber);
+    public ResponseEntity<String> handleFormSubmission(
+            @RequestParam @NotBlank(message = "Please enter a room name") String roomName,
+            @RequestParam int roomNumber
+    ) {
+        RoomDto dto = new RoomDto(roomName, roomNumber);
         roomService.createRoom(dto);
         return new ResponseEntity<>("Added a new room to database", HttpStatus.CREATED);
     }
