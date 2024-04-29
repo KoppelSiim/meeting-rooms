@@ -54,12 +54,16 @@ public class RoomController {
     }
 
     @PostMapping("/book/{id}")
-    public ResponseEntity<RoomDto> bookRoomById(@PathVariable Long id,
-                                                @RequestParam("bookedFrom") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime bookedFrom,
-                                                @RequestParam("bookedTo") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime bookedTo) {
-        System.out.println(bookedFrom);
-        System.out.println(bookedTo);
-        RoomDto bookedRoomDto = roomService.bookRoom(id);
+    public ResponseEntity<RoomDto> bookRoomById(
+        @PathVariable Long id,
+        @RequestParam("bookedFrom") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime bookedFrom,
+        @RequestParam("bookedTo") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime bookedTo) {
+
+        RoomDto dto = roomService.getRoomById(id);
+        dto.setBookedFrom(bookedFrom);
+        dto.setBookedTo(bookedTo);
+        dto.setBooked(true);
+        RoomDto bookedRoomDto = roomService.bookRoom(dto);
         return new ResponseEntity<>(bookedRoomDto, HttpStatus.OK);
     }
 

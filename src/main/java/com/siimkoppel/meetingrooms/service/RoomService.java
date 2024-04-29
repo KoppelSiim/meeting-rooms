@@ -9,7 +9,7 @@ public interface RoomService {
     RoomDto createRoom(RoomDto room);
     RoomDto getRoomById(Long id);
 
-    RoomDto bookRoom(Long id);
+    RoomDto bookRoom(RoomDto roomDto);
 
     List<RoomDto> getAllRooms();
 }

@@ -34,9 +34,7 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
-    public RoomDto bookRoom(Long id) {
-        RoomDto roomDto = getRoomById(id);
-        roomDto.setBooked(true);
+    public RoomDto bookRoom(RoomDto roomDto) {
         Room room = RoomMapper.mapToRoom(roomDto);
         Room updatedRoom = roomRepository.save(room);
         return RoomMapper.mapToRoomDto(updatedRoom);
