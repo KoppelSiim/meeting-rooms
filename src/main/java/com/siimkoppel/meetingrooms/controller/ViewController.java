@@ -40,7 +40,7 @@ public class ViewController {
     @GetMapping("/book/{id}")
     public ModelAndView bookRoomView(@PathVariable Long id) {
         RoomDto dto = roomService.getRoomById(id);
-        RoomViewModel roomViewModel = new RoomViewModel(id, dto.getRoomName(), dto.getRoomNumber());
+        RoomViewModel roomViewModel = new RoomViewModel(dto.getId(), dto.getRoomName(), dto.getRoomNumber());
         ModelAndView bookRoomModel = new ModelAndView("bookroom");
         bookRoomModel.addObject("room", roomViewModel);
         return bookRoomModel;

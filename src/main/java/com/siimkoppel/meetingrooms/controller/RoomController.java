@@ -6,12 +6,14 @@ import jakarta.validation.ConstraintViolationException;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -52,7 +54,11 @@ public class RoomController {
     }
 
     @PostMapping("/book/{id}")
-    public ResponseEntity<RoomDto> bookRoomById(@PathVariable Long id) {
+    public ResponseEntity<RoomDto> bookRoomById(@PathVariable Long id,
+                                                @RequestParam("bookedFrom") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime bookedFrom,
+                                                @RequestParam("bookedTo") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime bookedTo) {
+        System.out.println(bookedFrom);
+        System.out.println(bookedTo);
         RoomDto bookedRoomDto = roomService.bookRoom(id);
         return new ResponseEntity<>(bookedRoomDto, HttpStatus.OK);
     }
