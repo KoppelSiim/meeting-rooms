@@ -12,5 +12,6 @@
     <input type="number" name="roomNumber"/></br>
 	<input type="submit" value="Submit"/>
 </form>
+<a href="/home">Home</a>
 </body>
 </html>
