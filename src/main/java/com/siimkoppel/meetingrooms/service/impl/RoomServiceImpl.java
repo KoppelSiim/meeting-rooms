@@ -7,6 +7,7 @@ import com.siimkoppel.meetingrooms.repository.RoomRepository;
 import com.siimkoppel.meetingrooms.service.RoomService;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -34,7 +35,10 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
-    public RoomDto bookRoom(RoomDto roomDto) {
+    public RoomDto bookRoom(RoomDto roomDto, LocalDateTime bookedFrom, LocalDateTime bookedTo) {
+        roomDto.setBookedFrom(bookedFrom);
+        roomDto.setBookedTo(bookedTo);
+        roomDto.setBooked(true);
         Room room = RoomMapper.mapToRoom(roomDto);
         Room updatedRoom = roomRepository.save(room);
         return RoomMapper.mapToRoomDto(updatedRoom);

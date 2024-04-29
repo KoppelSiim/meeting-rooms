@@ -60,10 +60,7 @@ public class RoomController {
         @RequestParam("bookedTo") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime bookedTo) {
 
         RoomDto dto = roomService.getRoomById(id);
-        dto.setBookedFrom(bookedFrom);
-        dto.setBookedTo(bookedTo);
-        dto.setBooked(true);
-        RoomDto bookedRoomDto = roomService.bookRoom(dto);
+        RoomDto bookedRoomDto = roomService.bookRoom(dto, bookedFrom, bookedTo);
         return new ResponseEntity<>(bookedRoomDto, HttpStatus.OK);
     }
 
