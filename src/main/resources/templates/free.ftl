@@ -5,6 +5,7 @@
     <title>Title</title>
 </head>
 <body>
+<a href="/home">Home</a>
 <#list roomViewModels as room>
 <div>
     <ul style="list-style:none;">
