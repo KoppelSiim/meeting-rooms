@@ -46,4 +46,19 @@ public class ViewController {
         return bookRoomModel;
     }
 
+    @GetMapping("/freerooms")
+    public ModelAndView showFreeRooms() {
+        List<RoomDto> allRooms = roomService.getAllRooms();
+        List<RoomDto> nonBookedRooms = allRooms.stream()
+                .filter(roomDto -> !roomDto.isBooked())
+                .toList();
+        List<RoomViewModel> roomViewModels = nonBookedRooms
+                .stream()
+                .map(roomDto -> new RoomViewModel(roomDto.getId(), roomDto.getRoomName(), roomDto.getRoomNumber()))
+                .collect(Collectors.toList());
+        ModelAndView freeRoomsModel = new ModelAndView("free");
+        freeRoomsModel.addObject("roomViewModels", roomViewModels);
+        return freeRoomsModel;
+    }
+
 }

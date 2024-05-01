@@ -8,6 +8,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -38,7 +39,7 @@ public class RoomController {
         return ResponseEntity.ok(rooms);
     }
 
-    @PostMapping("/addroom")
+    @PostMapping(value = "/addroom",  produces = MediaType.APPLICATION_JSON_VALUE )
     public ResponseEntity<?> handleFormSubmission(
         @Valid @RequestParam @NotBlank(message = "Please enter a room name") String roomName,
         @Valid @RequestParam @Positive(message = "Room number must be positive") int roomNumber
