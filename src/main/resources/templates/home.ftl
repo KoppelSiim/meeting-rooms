@@ -5,7 +5,8 @@
 </head>
 <body>
     <h1>List of Rooms</h1>
-    <a href="/addroom"> Add room </a>
+    <a href="/addroom"> Add room </a></br>
+    <a href="/freerooms"> Free rooms </a>
         <#list roomViewModels as room>
             <div>
                 <ul style="list-style:none;">
