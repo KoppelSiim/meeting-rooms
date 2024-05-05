@@ -27,22 +27,21 @@ public class RoomController {
         this.roomService = roomService;
     }
 
-    @GetMapping("/welcome")
-    public ResponseEntity<String> welcomeMessage() {
-        String message = "Welcome to my meeting rooms application";
-        return ResponseEntity.ok(message);
-    }
-
     @GetMapping("/rooms")
     public ResponseEntity<List<RoomDto>> getAllRooms() {
         List<RoomDto> rooms = roomService.getAllRooms();
-        return ResponseEntity.ok(rooms);
+
+        if (rooms != null) {
+            return ResponseEntity.ok(rooms);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
-    @PostMapping(value = "/addroom",  produces = MediaType.APPLICATION_JSON_VALUE )
+    @PostMapping(value = "/addroom", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> handleFormSubmission(
-        @Valid @RequestParam @NotBlank(message = "Please enter a room name") String roomName,
-        @Valid @RequestParam @Positive(message = "Room number must be positive") int roomNumber
+            @Valid @RequestParam @NotBlank(message = "Please enter a room name") String roomName,
+            @Valid @RequestParam @Positive(message = "Room number must be positive") int roomNumber
     ) {
         RoomDto dto = new RoomDto(roomName, roomNumber);
         try {
@@ -56,9 +55,9 @@ public class RoomController {
 
     @PostMapping("/book/{id}")
     public ResponseEntity<RoomDto> bookRoomById(
-        @PathVariable Long id,
-        @RequestParam("bookedFrom") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime bookedFrom,
-        @RequestParam("bookedTo") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime bookedTo) {
+            @PathVariable Long id,
+            @RequestParam("bookedFrom") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime bookedFrom,
+            @RequestParam("bookedTo") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime bookedTo) {
 
         RoomDto dto = roomService.getRoomById(id);
         RoomDto bookedRoomDto = roomService.bookRoom(dto, bookedFrom, bookedTo);
@@ -68,7 +67,12 @@ public class RoomController {
     @GetMapping("/{id}")
     public ResponseEntity<RoomDto> getRoomById(@PathVariable Long id) {
         RoomDto roomDto = roomService.getRoomById(id);
-        return ResponseEntity.ok(roomDto);
+
+        if (roomDto != null) {
+            return ResponseEntity.ok(roomDto);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
 }
