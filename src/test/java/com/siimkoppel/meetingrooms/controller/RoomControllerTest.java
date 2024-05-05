@@ -13,7 +13,7 @@ import org.springframework.http.ResponseEntity;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 public class RoomControllerTest {
@@ -55,6 +55,17 @@ public class RoomControllerTest {
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
         assertEquals(expectedRoomDto, responseEntity.getBody());
         verify(roomService, times(1)).getRoomById(expectedRoomId);
+    }
+
+    @Test
+    public void getRoomById_returnsNotFoundWhenRoomDoesNotExist() {
+
+        Long nonExistentRoomId = 1000L;
+        when(roomService.getRoomById(nonExistentRoomId)).thenReturn(null);
+
+        ResponseEntity<RoomDto> responseEntity = controller.getRoomById(nonExistentRoomId);
+        assertEquals(HttpStatus.NOT_FOUND, responseEntity.getStatusCode());
+        assertNull(responseEntity.getBody());
     }
 
 }
