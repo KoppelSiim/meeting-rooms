@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 public class RoomServiceImpl implements RoomService {
 
     private final RoomRepository roomRepository;
+
     public RoomServiceImpl(RoomRepository roomRepository) {
         this.roomRepository = roomRepository;
     }
@@ -28,10 +29,12 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     public RoomDto getRoomById(Long id) {
-        Room room = roomRepository.
-                findById(id).
-                orElseThrow(()->new RuntimeException("Room does not exist"));
-        return RoomMapper.mapToRoomDto(room);
+        Room room = roomRepository.findById(id).orElse(null);
+        if (room != null) {
+            return RoomMapper.mapToRoomDto(room);
+        } else {
+            return null;
+        }
     }
 
     @Override
