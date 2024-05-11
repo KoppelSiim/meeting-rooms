@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="et">
 <head>
-    <title>Rooms</title>
+    <meta charset="UTF-8">
+    <title>Koosolekuruumid</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>List of Rooms</h1>
-    <a href="/addroom"> Add room </a></br>
-    <a href="/freerooms"> Free rooms </a>
+    <h1>Tubade nimekiri</h1>
+    <a href="/addroom">Lisa ruum</a></br>
+    <a href="/freerooms">Vabad ruumid</a>
         <#list roomViewModels as room>
             <div>
                 <ul style="list-style:none;">

@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="et">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Koosolekuruumid</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<a href="/home">Home</a>
+<h1>Vabad ruumid</h1>
+<a href="/home">Kodu</a>
 <#list roomViewModels as room>
 <div>
     <ul style="list-style:none;">

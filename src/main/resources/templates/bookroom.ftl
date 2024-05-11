@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="et">
 <head>
-    <title>Book room</title>
+    <meta charset="UTF-8">
+    <title>Koosolekuruumid</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<h1>Book room</h1>
+<h1>Broneeri ruum</h1>
 <form action="/api/book/${room.id()}" method="post">
     <div>
         <label for="bookedFrom">Booked From:</label>
@@ -15,7 +17,7 @@
         <input type="datetime-local" id="bookedTo" name="bookedTo">
     </div>
     <div>
-        Roomname:${room.roomName()}</br>
+        Roomname:${room.roomName()}
         Room number:${room.roomNumber()}
     </div>
     <button type="submit">Book room</button>

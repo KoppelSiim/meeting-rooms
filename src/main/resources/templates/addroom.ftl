@@ -1,17 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="et">
 <head>
-	<title>Add room view</title>
+    <meta charset="UTF-8">
+	<title>Koosolekuruumid</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<h1>Add room</h1>
+<h1>Lisa ruum</h1>
 <form action="api/addroom" method="post">
-    <div>Roomname:</div>
+    <div>Ruumi nimi:</div>
     <input type="text" name="roomName"/>
-    <div>Room number:</div>
+    <div>Ruumi number:</div>
     <input type="number" name="roomNumber"/></br>
 	<input type="submit" value="Submit"/>
 </form>
-<a href="/home">Home</a>
+<a href="/home">Kodu</a>
 </body>
 </html>
