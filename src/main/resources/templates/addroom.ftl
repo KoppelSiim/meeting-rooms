@@ -2,8 +2,8 @@
 <html lang="et">
 <head>
     <meta charset="UTF-8">
-	<title>Koosolekuruumid</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Koosolekuruumid</title>
+    <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
 <div class="container">
@@ -16,6 +16,6 @@
         <input type="submit" value="Submit"/>
     </form>
     <a href="/home">Kodu</a>
-    </div>
+</div>
 </body>
 </html>
