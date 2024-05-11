@@ -1,8 +1,28 @@
 h1 {
-color: #564FF0;
-background-color: #D3DFEA;
-font-family: 'Roboto', sans-serif;
-text-shadow: 2px 2px 2px #412C46;
-padding: 20px;
-font-size: 3rem;
+ color: #564FF0;
+ background-color: #D3DFEA;
+ font-family: 'Roboto', sans-serif;
+ text-shadow: 2px 2px 2px #412C46;
+ padding: 20px;
+ font-size: 3rem;
+}
+
+.container {
+ padding: 0 20px;
+ margin: 0 auto;
+}
+
+.nav a {
+ width: 150px;
+ color: #1D5E9F;
+ display: block;
+ padding: 2px;
+ font-size: 1.5rem;
+ margin-bottom: 5px;
+ text-decoration: none;
+ transition: box-shadow 0.3s ease;
+}
+
+.nav a:hover {
+ box-shadow: 0 0 5px rgba(80, 9, 171, 0.9);
 }

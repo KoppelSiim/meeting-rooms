@@ -6,11 +6,14 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<div class="container">
     <h1>Tubade nimekiri</h1>
-    <a href="/addroom">Lisa ruum</a></br>
-    <a href="/freerooms">Vabad ruumid</a>
+    <div class="nav">
+        <a href="/addroom">Lisa ruum</a>
+        <a href="/freerooms">Vabad ruumid</a>
+    </div>
         <#list roomViewModels as room>
-            <div>
+            <div class="rooms">
                 <ul style="list-style:none;">
                 <li>Room name: ${room.roomName()}</li>
                 <li>Room number: ${room.roomNumber()}</li>
@@ -19,4 +22,5 @@
             </div>
         </#list>
 </body>
+</div>
 </html>
