@@ -55,6 +55,18 @@ h1 {
  text-decoration: none;
  transition: box-shadow 0.3s ease;
 }
+
 .container a:hover {
  box-shadow: 0 0 5px rgba(80, 9, 171, 0.9);
+}
+
+.form-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.form-item label {
+    width: 150px;
+    margin-right: 10px;
 }
