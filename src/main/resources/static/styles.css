@@ -33,7 +33,6 @@ h1 {
  font-family: 'Georgia', sans-serif;
 }
 
-
 .rooms ul li a {
  color: #1D5E9F;
  padding: 2px;
@@ -43,5 +42,19 @@ h1 {
 }
 
 .rooms ul li a:hover {
+ box-shadow: 0 0 5px rgba(80, 9, 171, 0.9);
+}
+
+.container a{
+ width: 150px;
+ color: #1D5E9F;
+ display: block;
+ padding: 2px;
+ font-size: 1.5rem;
+ margin-bottom: 5px;
+ text-decoration: none;
+ transition: box-shadow 0.3s ease;
+}
+.container a:hover {
  box-shadow: 0 0 5px rgba(80, 9, 171, 0.9);
 }

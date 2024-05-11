@@ -10,11 +10,11 @@
     <h1>Vabad ruumid</h1>
     <a href="/home">Kodu</a>
     <#list roomViewModels as room>
-    <div>
+    <div class="rooms">
         <ul style="list-style:none;">
-            <li>Room ${room_index + 1}</li>
-            <li>Room name: ${room.roomName()}</li>
-            <li>Room number: ${room.roomNumber()}</li>
+            <li>${room_index + 1}</li>
+            <li>Toa nimi: ${room.roomName()}</li>
+            <li>Toa number: ${room.roomNumber()}</li>
         </ul>
     </div>
     </#list>
