@@ -26,3 +26,22 @@ h1 {
 .nav a:hover {
  box-shadow: 0 0 5px rgba(80, 9, 171, 0.9);
 }
+
+.rooms ul li {
+ padding: 2px;
+ color: #36454F;
+ font-family: 'Georgia', sans-serif;
+}
+
+
+.rooms ul li a {
+ color: #1D5E9F;
+ padding: 2px;
+ font-size: 24px;
+ text-decoration: none;
+ transition: box-shadow 0.3s ease;
+}
+
+.rooms ul li a:hover {
+ box-shadow: 0 0 5px rgba(80, 9, 171, 0.9);
+}

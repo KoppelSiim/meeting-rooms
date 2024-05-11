@@ -15,9 +15,9 @@
         <#list roomViewModels as room>
             <div class="rooms">
                 <ul style="list-style:none;">
-                <li>Room name: ${room.roomName()}</li>
-                <li>Room number: ${room.roomNumber()}</li>
-                <a href="book/${room.id()}">Book</a>
+                    <li>Ruumi nimi: ${room.roomName()}</li>
+                    <li>Ruumi number: ${room.roomNumber()}</li>
+                    <li><a href="book/${room.id()}">Broneeri</a></li>
                 </ul>
             </div>
         </#list>
