@@ -9,13 +9,16 @@
 <div class="container">
     <h1>Lisa ruum</h1>
     <form action="api/addroom" method="post">
-        <div>Ruumi nimi:</div>
-        <input type="text" name="roomName"/>
-        <div>Ruumi number:</div>
-        <input type="number" name="roomNumber"/></br>
-        <input type="submit" value="Submit"/>
+        <div class="form-item">
+            <label for="roomName">Ruumi nimi</label>
+            <input type="text"  id="roomName" name="roomName"/>
+        </div>
+        <div class="form-item">
+            <label for="roomNumber">Ruumi number</label>
+            <input type="number" id="roomNumber" name="roomNumber"/>
+        </div>
+        <button type="submit" value="Submit">Lisa</button>
     </form>
-    <a href="/home">Kodu</a>
 </div>
 </body>
 </html>
