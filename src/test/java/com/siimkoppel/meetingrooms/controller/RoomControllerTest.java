@@ -13,14 +13,14 @@ import org.springframework.http.ResponseEntity;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.*;
 
 public class RoomControllerTest {
 
     @Mock
     private RoomService roomService;
-
     @InjectMocks
     private RoomController controller;
 
@@ -66,6 +66,23 @@ public class RoomControllerTest {
         ResponseEntity<RoomDto> responseEntity = controller.getRoomById(nonExistentRoomId);
         assertEquals(HttpStatus.NOT_FOUND, responseEntity.getStatusCode());
         assertNull(responseEntity.getBody());
+    }
+
+    @Test
+    public void createRoomCreatesRoom() {
+        // Setup: Create RoomDto objects
+        RoomDto roomDto = new RoomDto("Saal", 244);
+        RoomDto savedRoomDto = new RoomDto("Saal", 244);
+
+        // Mock Setup: Mock the behavior of createRoom method
+        when(roomService.createRoom(any(RoomDto.class)))
+                .thenReturn(savedRoomDto);
+
+        // Method Call: Call the method under test
+        RoomDto result = roomService.createRoom(roomDto);
+
+        // Assertion: Verify the behavior of the method under test
+        assertEquals(savedRoomDto, result);
     }
 
 }
