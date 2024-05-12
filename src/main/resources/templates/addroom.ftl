@@ -19,6 +19,7 @@
         </div>
         <button type="submit" value="Submit">Lisa</button>
     </form>
+    <a href="/home">Kodu</a>
 </div>
 </body>
 </html>

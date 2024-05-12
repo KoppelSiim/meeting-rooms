@@ -59,6 +59,9 @@ h1 {
 .container a:hover {
  box-shadow: 0 0 5px rgba(80, 9, 171, 0.9);
 }
+form{
+ margin-bottom: 20px;
+}
 
 .form-item {
     display: flex;
