@@ -17,14 +17,14 @@
             <label for="bookedTo">Broneeringu lõpp</label>
             <input type="datetime-local" id="bookedTo" name="bookedTo">
         </div>
-        <div class="rooms">
-            <ul style="list-style:none;">
-                <li> Ruumi nimi :${room.roomName()}</li>
-                <li> Ruumi number:${room.roomNumber()}</li>
-            </ul>
-        </div>
-        <button type="submit">Book room</button>
+        <button type="submit">Broneeri</button>
     </form>
+    <div class="rooms book-align">
+        <ul style="list-style:none;">
+            <li> Ruumi nimi: ${room.roomName()}</li>
+            <li> Ruumi number: ${room.roomNumber()}</li>
+        </ul>
+    </div>
 </div>
 </body>
 </html>
