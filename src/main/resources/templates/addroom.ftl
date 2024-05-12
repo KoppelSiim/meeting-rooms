@@ -11,11 +11,11 @@
     <form action="api/addroom" method="post">
         <div class="form-item">
             <label for="roomName">Ruumi nimi</label>
-            <input type="text"  id="roomName" name="roomName"/>
+            <input type="text"  id="roomName" name="roomName"  minlength="1" maxlength="50" required/>
         </div>
         <div class="form-item">
             <label for="roomNumber">Ruumi number</label>
-            <input type="number" id="roomNumber" name="roomNumber"/>
+            <input type="number" id="roomNumber" name="roomNumber" min="1" required/>
         </div>
         <button type="submit" value="Submit">Lisa</button>
     </form>
