@@ -10,6 +10,7 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 
@@ -83,6 +84,35 @@ public class RoomControllerTest {
 
         // Assertion: Verify the behavior of the method under test
         assertEquals(savedRoomDto, result);
+    }
+
+    @Test
+    public void bookRoomBooksRoom() {
+        RoomDto roomDto = new RoomDto(
+                1L,
+                "Koosolek", 10, true,
+                LocalDateTime.of(2024, 5, 9, 6, 30, 40),
+                LocalDateTime.of(2024, 9, 9, 6, 30, 40));
+
+        RoomDto bookedRoomDto = new RoomDto(
+                1L,
+                "Koosolek", 10, true,
+                LocalDateTime.of(2024, 5, 9, 6, 30, 40),
+                LocalDateTime.of(2024, 9, 9, 6, 30, 40));
+
+        // Mocking the behavior of roomService.bookRoom for specific arguments
+        when(roomService.bookRoom(eq(roomDto),
+                eq(LocalDateTime.of(2024, 5, 9, 6, 30, 40)),
+                eq(LocalDateTime.of(2024, 9, 9, 6, 30, 40))))
+                .thenReturn(bookedRoomDto);
+
+        RoomDto result = roomService.bookRoom(
+                roomDto,
+                LocalDateTime.of(2024, 5, 9, 6, 30, 40),
+                LocalDateTime.of(2024, 9, 9, 6, 30, 40)
+        );
+
+        assertEquals(bookedRoomDto, result);
     }
 
 }
