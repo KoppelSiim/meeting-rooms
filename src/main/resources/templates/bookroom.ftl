@@ -25,6 +25,7 @@
             <li> Ruumi number: ${room.roomNumber()}</li>
         </ul>
     </div>
+    <a href="/home">Kodu</a>
 </div>
 </body>
 </html>

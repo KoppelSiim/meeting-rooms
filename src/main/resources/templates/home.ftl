@@ -7,7 +7,7 @@
 </head>
 <body>
 <div class="container">
-    <h1>Tubade nimekiri</h1>
+    <h1>Ruumide nimekiri</h1>
     <div class="nav">
         <a href="/addroom">Lisa ruum</a>
         <a href="/freerooms">Vabad ruumid</a>
