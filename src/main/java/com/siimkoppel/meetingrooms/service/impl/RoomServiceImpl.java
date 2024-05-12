@@ -39,6 +39,17 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     public RoomDto bookRoom(RoomDto roomDto, LocalDateTime bookedFrom, LocalDateTime bookedTo) {
+
+        LocalDateTime currentTime = LocalDateTime.now();
+
+        if (bookedFrom.isBefore(currentTime)) {
+            throw new IllegalArgumentException("Booking start time cannot be in the past.");
+        }
+
+        if (bookedTo.isBefore(bookedFrom)) {
+            throw new IllegalArgumentException("Booking end time cannot be before start time.");
+        }
+
         roomDto.setBookedFrom(bookedFrom);
         roomDto.setBookedTo(bookedTo);
         roomDto.setBooked(true);
